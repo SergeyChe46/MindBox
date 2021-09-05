@@ -31,11 +31,11 @@ namespace MindBox.Tests
         [Fact]
         public void IsThisRectangular()
         {
-            Triangle triangle = new Triangle(3, 4, 5);
-            Triangle triangle1 = new Triangle(2, 3, 4);
+            Triangle Rectangulartriangle = new Triangle(3, 4, 5);
+            Triangle NotRectangulartriangle1 = new Triangle(2, 3, 4);
 
-            Assert.True(triangle.IsRectangular());
-            Assert.False(triangle1.IsRectangular());
+            Assert.True(Rectangulartriangle.IsRectangular());
+            Assert.False(NotRectangulartriangle1.IsRectangular());
         }
     }
 }

@@ -8,20 +8,19 @@ namespace MindBox
 {
     public class Triangle : IShape
     {
-        //проверка аргументов в конструкторе а не в свойствах для уменьшения объёма кода
+        //Проверяем может ли быть такой треугольник
         public Triangle(double sideA, double sideB, double sideC)
         {
-            if(sideA >= 0 && sideB >= 0 && sideC >= 0)
-                {
-                if (sideA < sideB + sideC && sideB < sideA + sideC && sideC < sideA + sideB)
-                {
-                    this.sideA = sideA;
-                    this.sideB = sideB;
-                    this.sideC = sideC;
-                }
-                else throw new ArgumentException("Такого треугольника не существет");
-                }
-            else throw new ArgumentException("Длины сторон не могут быть меньше нуля");
+            if(sideA < sideB + sideC && sideB < sideA + sideC && sideC < sideA + sideB)
+            {
+                SideA = sideA;
+                SideB = sideB;
+                SideC = sideC;
+            }
+            else
+            {
+                throw new ArgumentException("Такого треугольника быть не может");
+            }
         }
 
         public double CalculateSquare()
@@ -33,16 +32,48 @@ namespace MindBox
         public bool IsRectangular()
         {
             double[] sides = { sideA, sideB, sideC };
-
             double hypotenuse = sides.Max();
             double[] cathetus = sides.OrderBy(s => s).SkipLast(1).ToArray();
             return Math.Pow(hypotenuse, 2) == Math.Pow(cathetus[0], 2) + Math.Pow(cathetus[1], 2);
         }
-
-        private double halfPerimeter => (sideA + sideB + sideC) / 2;
-
+        //И если такой треугольник может быть
+        public double SideA
+        {
+            get => sideA;
+            set
+            {
+                CheckSide(value, ref sideA);
+            }
+        }
+        public double SideB
+        {
+            get => sideB;
+            set
+            {
+                CheckSide(value, ref sideB);
+            }
+        }
+        public double SideC
+        {
+            get => sideC;
+            set
+            {
+                CheckSide(value, ref sideC);
+            }
+        }
+        
         private double sideA;
         private double sideB;
         private double sideC;
+        private double halfPerimeter => (sideA + sideB + sideC) / 2;
+        private void CheckSide(double value, ref double side)
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("Длина стороны не может быть отрицательной");
+            }
+            side = value;
+        }
     }
 }
+
