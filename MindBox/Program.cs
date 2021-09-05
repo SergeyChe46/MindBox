@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MindBox
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] param)
         {
-            //Добавить новую фигуру
-            IEnumerable<IShape> shapes = new List<IShape>
-            {
-                new Circle(5),
-                new Triangle(3, 4, 5)
-            };
-
-            ShapeInformer informer = new(shapes);
         }
     }
 }

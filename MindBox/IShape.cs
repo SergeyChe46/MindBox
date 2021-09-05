@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MindBox
 {
-    //Для добавления новых типов фигур достаточно реализовать интерфейс 
     interface IShape
     {
-        public double CalculateSquare();
+        double CalculateSquare();
     }
 }

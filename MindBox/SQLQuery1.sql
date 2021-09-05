@@ -1,4 +1,3 @@
-SELECT *
-FROM Product
-LEFT JOIN Category
-ON Products.Id = Category.Id
+SELECT Products.Name, Caregories.Name
+FROM Products, Categories
+WHERE Products.CategoryId = Categories.Id

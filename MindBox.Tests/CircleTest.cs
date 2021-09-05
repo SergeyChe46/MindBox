@@ -9,13 +9,22 @@ namespace MindBox.Tests
 {
     public class CircleTest
     {
-        private readonly Circle circle = new Circle(5);
-
         [Fact]
-        public void CalculateRightSquare()
+        public void CalculateSquareTest()
+        {            
+            Circle circle = new Circle(5);
+
+            double expected = circle.CalculateSquare();
+
+            Assert.Equal(Math.PI * Math.Pow(circle.Radius, 2), expected);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-65)]
+        public void NegativeArgumentTest(double radius)
         {
-            Assert.Equal(78.53981633974483, circle.CalculateSquare());
-            Assert.IsType<double>(circle.CalculateSquare());
+            Assert.Throws<ArgumentException>(() => new Circle(radius));
         }
     }
 }

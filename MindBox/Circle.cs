@@ -8,16 +8,26 @@ namespace MindBox
 {
     public class Circle : IShape
     {
-        private double radius;
-
         public Circle(double radius)
         {
-            this.radius = radius;
+            Radius = radius;
         }
 
         public double CalculateSquare()
         {
-            return Math.PI * (radius * radius);
+            return Math.PI * Math.Pow(radius, 2);
         }
+
+        public double Radius
+        {
+            get => radius;
+            set
+            {
+                if (value <= 0) throw new ArgumentException("Радиус должен быть больше нуля");
+                else radius = value;
+            }
+        }
+
+        private double radius;
     }
 }
