@@ -36,7 +36,8 @@ namespace MindBox
             double[] cathetus = sides.OrderBy(s => s).SkipLast(1).ToArray();
             return Math.Pow(hypotenuse, 2) == Math.Pow(cathetus[0], 2) + Math.Pow(cathetus[1], 2);
         }
-        //И если такой треугольник может быть
+        //И если такой треугольник математически может быть,
+        //то проверяем, что его стороны неотрицательны
         public double SideA
         {
             get => sideA;
